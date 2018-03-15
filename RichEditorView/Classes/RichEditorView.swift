@@ -319,12 +319,18 @@ import UIKit
     public func alignRight() {
         runJS("RE.setJustifyRight();")
     }
-    
+
     public func insertImage(_ url: String, alt: String) {
         runJS("RE.prepareInsert();")
         runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)');")
     }
-    
+
+    // Zap
+    public func embedImage(_ image: UIImage, alt: String) {
+        runJS("RE.prepareInsert();")
+        runJS("RE.insertImage('\(image.encodeBase64())', '\(alt.escaped)');")
+    }
+
     public func insertLink(_ href: String, title: String) {
         runJS("RE.prepareInsert();")
         runJS("RE.insertLink('\(href.escaped)', '\(title.escaped)');")
