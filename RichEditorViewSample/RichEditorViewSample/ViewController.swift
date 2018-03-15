@@ -48,6 +48,8 @@ extension ViewController: RichEditorDelegate {
         if content.isEmpty {
             htmlTextView.text = "HTML Preview"
         } else {
+            print("HTML:\n\(content)")
+            
             htmlTextView.text = content
         }
     }
@@ -81,7 +83,14 @@ extension ViewController: RichEditorToolbarDelegate {
     }
 
     func richEditorToolbarInsertImage(_ toolbar: RichEditorToolbar) {
-        toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
+        guard let image = UIImage(named: "goat") else {
+            print("ERROR: Failed to import goat.png")
+            return
+        }
+
+        // Zap instead of inserting a URL, embed image data
+        toolbar.editor?.embedImage(image, alt: "goat.png")
+        //toolbar.editor?.insertImage("https://gravatar.com/avatar/696cf5da599733261059de06c4d1fe22", alt: "Gravatar")
     }
 
     func richEditorToolbarInsertLink(_ toolbar: RichEditorToolbar) {

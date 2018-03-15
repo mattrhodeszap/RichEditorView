@@ -241,6 +241,18 @@ RE.insertImage = function(url, alt) {
     RE.callback("input");
 };
 
+// Zap
+RE.embedImage = function(encodedString, alt) {
+    let encodedImageDataString = "data:image/png;base64," + encodedString
+    var img = document.createElement('img');
+    img.setAttribute("src", encodedImageDataString);
+    img.setAttribute("alt", alt);
+    img.onload = RE.updateHeight;
+
+    RE.insertHTML(img.outerHTML);
+    RE.callback("input");
+};
+
 RE.setBlockquote = function() {
     document.execCommand('formatBlock', false, '<blockquote>');
 };
