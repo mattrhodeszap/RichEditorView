@@ -328,7 +328,7 @@ import UIKit
     // Zap
     public func embedImage(_ image: UIImage, alt: String) {
         runJS("RE.prepareInsert();")
-        runJS("RE.embedImage('\(image.encodeBase64().escaped)', '\(alt.escaped)');")
+        runJS("RE.embedImage('\(image.encodeBase64())', '\(alt.escaped)');")
     }
 
     public func insertLink(_ href: String, title: String) {
