@@ -12,7 +12,7 @@ import UIKit
 internal extension UIImage {
 
     func encodeBase64() -> String {
-        guard let imageData = UIImageJPEGRepresentation(self, 0.8) else { return "" }
+        guard let imageData = UIImagePNGRepresentation(self) else { return "" }
 
         return imageData.base64EncodedString()
     }

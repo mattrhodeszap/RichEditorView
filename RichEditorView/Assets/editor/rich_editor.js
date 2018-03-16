@@ -243,7 +243,7 @@ RE.insertImage = function(url, alt) {
 
 // Zap
 RE.embedImage = function(encodedString, alt) {
-    let encodedImageDataString = "data:image/jpg;base64," + encodedString
+    let encodedImageDataString = "data:image/png;base64," + encodedString
     var img = document.createElement('img');
     img.setAttribute("src", encodedImageDataString);
     img.setAttribute("alt", alt);
