@@ -55,6 +55,12 @@ import UIKit
     open private(set) var webView: UIWebView
 
     /// Whether or not scroll is enabled on the view.
+    open var scrollIndicatorInsets: UIEdgeInsets {
+        get { return webView.scrollView.scrollIndicatorInsets }
+        set { webView.scrollView.scrollIndicatorInsets = newValue }
+    }
+
+    /// Whether or not scroll is enabled on the view.
     open var isScrollEnabled: Bool = true {
         didSet {
             webView.scrollView.isScrollEnabled = isScrollEnabled
