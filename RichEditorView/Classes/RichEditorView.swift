@@ -155,7 +155,7 @@ import UIKit
         webView.scrollView.isScrollEnabled = isScrollEnabled
         webView.scrollView.bounces = true // Zap false
         webView.scrollView.delegate = self
-        webView.scrollView.clipsToBounds = true // Zap false
+        webView.scrollView.clipsToBounds = false
         
         webView.cjw_inputAccessoryView = nil
         
