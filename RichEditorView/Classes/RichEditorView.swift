@@ -87,7 +87,8 @@ import UIKit
     private var innerLineHeight: Int = 28
 
     /// The line height of the editor. Defaults to 28.
-    open private(set) var lineHeight: Int {
+    /// Zap - allow setting this value, but it must be done before we get going.
+    open var lineHeight: Int {
         get {
             if isEditorLoaded, let lineHeight = Int(runJS("RE.getLineHeight();")) {
                 return lineHeight
