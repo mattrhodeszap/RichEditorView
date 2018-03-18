@@ -147,9 +147,9 @@ import UIKit
         webView.backgroundColor = .white
         
         webView.scrollView.isScrollEnabled = isScrollEnabled
-        webView.scrollView.bounces = false
+        webView.scrollView.bounces = true // Zap false
         webView.scrollView.delegate = self
-        webView.scrollView.clipsToBounds = false
+        webView.scrollView.clipsToBounds = true // Zap false
         
         webView.cjw_inputAccessoryView = nil
         
