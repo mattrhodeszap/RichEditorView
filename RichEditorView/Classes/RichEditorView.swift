@@ -552,7 +552,7 @@ import UIKit
     /// If we are not already the first responder, focus the editor.
     @objc private func viewWasTapped() {
         guard isSelectingEnabled else { return }
-        
+
         if !webView.containsFirstResponder {
             let point = tapRecognizer.location(in: webView)
             focus(at: point)
@@ -560,6 +560,8 @@ import UIKit
     }
 
     override open func becomeFirstResponder() -> Bool {
+        guard isSelectingEnabled else { return }
+
         if !webView.containsFirstResponder {
             focus()
             return true
