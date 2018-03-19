@@ -150,6 +150,7 @@ import UIKit
         webView.scalesPageToFit = false
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.dataDetectorTypes = UIDataDetectorTypes()
+        webView.isOpaque = false
         webView.backgroundColor = .white
         
         webView.scrollView.isScrollEnabled = isScrollEnabled
