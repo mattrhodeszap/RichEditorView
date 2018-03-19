@@ -74,7 +74,7 @@ import UIKit
     }
 
     /// Whether or not to allow user input in the view.
-    open var isSelectingEnabled: Bool {
+    open var isSelectingEnabled: Bool = true {
         didSet { webView.isUserInteractionEnabled = isSelectingEnabled }
     }
 
