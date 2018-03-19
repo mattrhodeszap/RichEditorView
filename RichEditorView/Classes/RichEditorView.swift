@@ -560,7 +560,7 @@ import UIKit
     }
 
     override open func becomeFirstResponder() -> Bool {
-        guard isSelectingEnabled else { return }
+        guard isSelectingEnabled else { return false }
 
         if !webView.containsFirstResponder {
             focus()
