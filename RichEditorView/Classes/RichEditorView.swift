@@ -516,7 +516,7 @@ import UIKit
             updateHeight()
         }
         else if method.hasPrefix("input") {
-            scrollCaretToVisible()
+            // Zap - do this ourselves - scrollCaretToVisible()
             let content = runJS("RE.getHtml()")
             contentHTML = content
             updateHeight()
