@@ -52,7 +52,7 @@ import UIKit
     }
 
     /// The internal UIWebView that is used to display the text.
-    open private(set) var webView: UIWebView
+    open private(set) var webView: RichWebView
 
     /// Whether or not scroll is enabled on the view.
     open var scrollIndicatorInsets: UIEdgeInsets {
@@ -74,7 +74,11 @@ import UIKit
     }
 
     /// Whether or not to allow user input in the view.
-    open var isSelectingEnabled: Bool = true
+    open var isSelectingEnabled: Bool = true {
+        didSet {
+            webView.isAllowedToBecomeFirstResponder = isSelectingEnabled
+        }
+    }
 
     /// The content HTML of the text being displayed.
     /// Is continually updated as the text is being edited.
@@ -133,13 +137,13 @@ import UIKit
     // MARK: Initialization
     
     public override init(frame: CGRect) {
-        webView = UIWebView()
+        webView = RichWebView()
         super.init(frame: frame)
         setup()
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        webView = UIWebView()
+        webView = RichWebView()
         super.init(coder: aDecoder)
         setup()
     }
@@ -551,8 +555,6 @@ import UIKit
     /// Called by the UITapGestureRecognizer when the user taps the view.
     /// If we are not already the first responder, focus the editor.
     @objc private func viewWasTapped() {
-        guard isSelectingEnabled else { return }
-
         if !webView.containsFirstResponder {
             let point = tapRecognizer.location(in: webView)
             focus(at: point)
@@ -560,8 +562,6 @@ import UIKit
     }
 
     override open func becomeFirstResponder() -> Bool {
-        guard isSelectingEnabled else { return false }
-
         if !webView.containsFirstResponder {
             focus()
             return true
@@ -573,5 +573,21 @@ import UIKit
     open override func resignFirstResponder() -> Bool {
         blur()
         return true
+    }
+}
+
+
+// MARK: - Zap - Custom webView
+
+public class RichWebView: UIWebView {
+
+    public var isAllowedToBecomeFirstResponder = true
+
+    override public var canBecomeFirstResponder: Bool {
+        if !isAllowedToBecomeFirstResponder {
+            return false
+        } else {
+            return super.canBecomeFirstResponder
+        }
     }
 }
