@@ -74,9 +74,7 @@ import UIKit
     }
 
     /// Whether or not to allow user input in the view.
-    open var isSelectingEnabled: Bool = true {
-        didSet { webView.isUserInteractionEnabled = isSelectingEnabled }
-    }
+    open var isSelectingEnabled: Bool = true
 
     /// The content HTML of the text being displayed.
     /// Is continually updated as the text is being edited.
@@ -553,6 +551,8 @@ import UIKit
     /// Called by the UITapGestureRecognizer when the user taps the view.
     /// If we are not already the first responder, focus the editor.
     @objc private func viewWasTapped() {
+        guard isSelectingEnabled else { return }
+        
         if !webView.containsFirstResponder {
             let point = tapRecognizer.location(in: webView)
             focus(at: point)
@@ -572,5 +572,4 @@ import UIKit
         blur()
         return true
     }
-
 }
