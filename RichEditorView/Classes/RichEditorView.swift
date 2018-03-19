@@ -73,6 +73,11 @@ import UIKit
         set { isContentEditable = newValue }
     }
 
+    /// Whether or not to allow user input in the view.
+    open var isSelectingEnabled: Bool {
+        didSet { webView.isUserInteractionEnabled = isSelectingEnabled }
+    }
+
     /// The content HTML of the text being displayed.
     /// Is continually updated as the text is being edited.
     open private(set) var contentHTML: String = "" {
