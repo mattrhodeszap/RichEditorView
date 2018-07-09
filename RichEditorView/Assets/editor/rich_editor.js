@@ -239,12 +239,12 @@ RE.insertImage = function(url, alt) {
     img.onload = RE.updateHeight;
 
     // Zap
-    let divBegin = "<div class=\"zapImage\" style=\"border: 3px solid lightGray; margin-left: auto; margin-right: auto; width: 100%; max-width: 500px;\">"
-    let divEnd = "</div>"
+    let preHtml = "<table border=0 cellspacing=0 width=\"100%\">\n<tr>\n<td></td>\n<td width=500><div class=\"zapImage\" style=\"border: 3px solid lightGray\">"
+    let postHtml = "</div></td>\n<td></td>\n</tr>\n</table>"
 
-    RE.insertHTML(divBegin);
+    RE.insertHTML(preHtml);
     RE.insertHTML(img.outerHTML);
-    RE.insertHTML(divEnd);
+    RE.insertHTML(postHtml);
     RE.callback("input");
 };
 
