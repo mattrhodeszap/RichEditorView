@@ -231,13 +231,10 @@ RE.setLineHeight = function(height) {
     RE.editor.style.lineHeight = height;
 };
 
-RE.insertImage = function(url, alt, widthPercent) {
+RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
-    if !widthPercent.isEmpty {
-        img.setAttribute("width", "\(widthPercent)%");
-    }
     img.onload = RE.updateHeight;
 
     RE.insertHTML(img.outerHTML);

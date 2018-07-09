@@ -331,10 +331,15 @@ import UIKit
         runJS("RE.setJustifyRight();")
     }
 
-    public func insertImage(_ url: String, alt: String, widthPercent: Float? = nil) {
+    public func insertImage(_ url: String, alt: String) {
         runJS("RE.prepareInsert();")
-        // Zap - widthPercent param
-        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)', '\(widthPercent == nil ? "" : "\(widthPercent!)")');")
+        // Zap - widthPercent param and DIV HTML
+        let divBegin = "<div class=\"zapImage\" style=\"border: 3px solid lightGray; margin-left: auto; margin-right: auto; width: 100%; max-width: 500px;\">"
+        let divEnd = "</div>"
+
+        runJS("RE.insertHtml(\(divBegin));")
+        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)');")
+        runJS("RE.insertHtml(\(divEnd));")
     }
 
     // Zap
