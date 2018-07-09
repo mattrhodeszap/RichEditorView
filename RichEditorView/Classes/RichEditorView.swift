@@ -331,9 +331,10 @@ import UIKit
         runJS("RE.setJustifyRight();")
     }
 
-    public func insertImage(_ url: String, alt: String) {
+    public func insertImage(_ url: String, alt: String, widthPercent: Float? = nil) {
         runJS("RE.prepareInsert();")
-        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)');")
+        // Zap - widthPercent param
+        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)', '\(widthPercent == nil ? "" : "\(widthPercent!)")';")
     }
 
     // Zap
