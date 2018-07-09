@@ -237,7 +237,13 @@ RE.insertImage = function(url, alt) {
     img.setAttribute("alt", alt);
     img.onload = RE.updateHeight;
 
+    // Zap
+    let divBegin = "<div class=\"zapImage\" style=\"border: 3px solid lightGray; margin-left: auto; margin-right: auto; width: 100%; max-width: 500px;\">"
+    let divEnd = "</div>"
+
+    RE.insertHTML(divBegin);
     RE.insertHTML(img.outerHTML);
+    RE.insertHTML(divEnd);
     RE.callback("input");
 };
 
