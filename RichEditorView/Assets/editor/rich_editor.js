@@ -240,7 +240,7 @@ RE.insertImage = function(url, alt) {
 
     // Zap
     let preHtml = "<table border=0 cellspacing=0 width=\"100%\">\n<tr>\n<td></td>\n<td width=500><div class=\"zapImage\" style=\"border: 3px solid lightGray\">"
-    let postHtml = "</div></td>\n<td></td>\n</tr>\n</table>"
+    let postHtml = "</div>\n</td>\n<td></td>\n</tr>\n</table>"
 
     RE.insertHTML(preHtml);
     RE.insertHTML(img.outerHTML);
