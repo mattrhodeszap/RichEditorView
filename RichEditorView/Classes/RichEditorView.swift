@@ -334,7 +334,7 @@ import UIKit
     public func insertImage(_ url: String, alt: String, widthPercent: Float? = nil) {
         runJS("RE.prepareInsert();")
         // Zap - widthPercent param
-        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)', '\(widthPercent == nil ? "" : "\(widthPercent!)")';")
+        runJS("RE.insertImage('\(url.escaped)', '\(alt.escaped)', '\(widthPercent == nil ? "" : "\(widthPercent!)")');")
     }
 
     // Zap
