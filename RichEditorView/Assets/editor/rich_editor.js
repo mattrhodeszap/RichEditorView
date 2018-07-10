@@ -235,16 +235,11 @@ RE.insertImage = function(url, alt) {
     var img = document.createElement('img');
     img.setAttribute("src", url);
     img.setAttribute("alt", alt);
-    img.setAttribute("width", "100%");
+    img.setAttribute("width", "80%");
+    img.setAttribute("style", "border: 2px solid lightGray; display: block; margin-left: auto; margin-right: auto;");
     img.onload = RE.updateHeight;
 
-    // Zap
-    let preHtml = "<table border=0 cellspacing=0 width=\"100%\">\n<tr>\n<td></td>\n<td width=500>\n<div class=\"zapImage\" style=\"border: 3px solid lightGray\">"
-    let postHtml = "\n</div>\n</td>\n<td>test test test</td>\n</tr>\n</table>"
-
-    RE.insertHTML(preHtml);
     RE.insertHTML(img.outerHTML);
-    RE.insertHTML(postHtml);
     RE.callback("input");
 };
 
